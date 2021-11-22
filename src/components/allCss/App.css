@@ -1,0 +1,367 @@
+
+* {
+	/* box-sizing: border-box; */
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	border: none;
+}
+/* most important all css files imprt in it at last check */
+
+::-webkit-scrollbar {
+	width: 12px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+	display: none;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+	transition: all 0.4s linear;
+	/* background-color: transparent !important; */
+	background: var(--win-scrollbar-bgcolor);
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+	background: var(--win-scrollbar-bgcolor-hover) !important;
+	/* background: rgba(0, 0, 0, 0.2); */
+	/* opacity: 0.8; */
+  }
+  .mn-flx {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  }
+  .mn-hlf-flx {
+	display: flex;
+	align-items: center;
+  }
+  .wr-flx {
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+  }
+  .ywr-flx {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+  }
+  .ywr-hlf-flx {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+  }
+  .mn-flx-end {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+  }
+  .mn-flx-start {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+  }
+  .mn-flx-spacebtwn {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+  }
+  .mn-flx-spacearond {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+  }
+  .mn-flx-hlf-end {
+	display: flex;
+	justify-content: flex-end;
+  }
+  .mn-flx-hlf-start {
+	display: flex;
+	justify-content: flex-start;
+  }
+  
+button:focus {
+	outline: 0 !important;
+}
+input:focus {
+	outline: 0 !important;
+}
+
+:root {
+	/* Define Some propertise in good manner */
+	/* Colors */
+	--win-primary1: #000d0f;
+	--win-primary2: #88909e;
+	--win-primary3: white;
+	--win-primary4: #4f6b96;
+	--win-secondry1: #3e4249;
+	--win-secondry2: #091218;
+	--win-secondry3: #1b2e2d;
+	--win-secondry4: #01a39b;
+	--win-secondry5: #68d4cf;
+	--win-boxShd1_1: #22252b;
+	--win-boxShd1_2: #131922;
+	--win-boxShd2_1: #0f161e;
+	--win-boxShd2_2: #081217;
+	--win-boxShd3_1: #000e11;
+	--win-boxShd3_2: #000e11;
+	--win-primary-text: #88909e;
+	--win-titleBar-footer: #131922;
+	--win-sidebar-bgcolor: #0d1216;
+	--win-scrollbar-bgcolor: #131922;
+	--win-scrollbar-bgcolor-hover: #4249554b;
+
+	/* font styling of window */
+	--win-fontsize: 20px;
+	--win-fontweight: 400;
+	--win-fontfamily1: Cagliostro;
+	--win-fontfamily2: AveriaSansLibre;
+	--win-fontfamily3: Anton-Regular;
+	--win-fontfamily4: Sofia-Pro-Black;
+	--win-fontfamily5: FredokaOne-Regular;
+
+	/* body width with side bar and main body */
+	--win-sidebar-width: 400px;
+	--win-mainbody-width: calc(100% - 400px);
+
+	/* why we are using 60 height less in 100vh because 35 px for title bar and 35 for foot bar  
+	and 2px for special touch because of which we increse height from top*/
+	--win-body-height: calc(100vh - 72px);
+	--win-mainbody-Adss: 160px;
+
+	/* we are using --win-body-height height + --win-mainbody-Adss*/
+	--win-body-height2: calc(100vh - 242px);
+
+	/* title bar menu styling of window */
+	--win-fontsize-titlebar: 18px;
+	--win-fontweight-titlebar: 400;
+	--win-menu-highliter-left: 0px;
+	--win-menu-highliter-width: 50px;
+	
+	/* side bar menu styling of window */
+	--win-fontsize-sidebar: 22px; 
+	/* everything else in side-navcss file */
+
+
+	/* usr profile back and box shadow */
+	--win-userProfile-hoveranim1: #000000;
+	--win-userProfile-hoveranim2: #4b4b4b;
+}
+
+body {
+	width: 100%;
+	height: 100%;
+	-webkit-user-select: none;
+	background: var(--win-primary1);
+}
+.hide {
+	display: none !important;
+}
+.forTopTouch {
+	/* most important on others simple windows  while we move to arrow toupward show strech sign 
+	but for frame less it not work thats why we add_it */
+	height: 2px;
+	background-color: var(--win-titleBar-footer);
+}
+.buttons {
+	/* width: 80px !important; */
+	padding: 0px 20px;
+	height: 35px;
+	margin-top: 12px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+	font-size: 18px;
+	overflow: hidden;
+	border-radius: 4px;
+	box-shadow: -1px 1px 2px var(--win-boxShd1_1),
+		1px -1px 2px var(--win-boxShd1_2);
+}
+.buttons:hover {
+	color: var(--win-primary3);
+	box-shadow: -2px 2px 6px var(--win-boxShd1_1),
+		2px -2px 6px var(--win-boxShd1_2);
+}
+/* $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ */
+/* Title bar css start here */
+.title-bar {
+	width: 100%;
+	height: 35px;
+	background-color: var(--win-titleBar-footer);
+	-webkit-app-region: drag !important; /*=> its for draging window important*/
+	/* overflow: hidden; */
+}
+
+/* ########################################### */
+/* opening title bar mini max close buttons */
+.title-bar > div {
+	/* most important for flow line in title bar */
+	float: left;
+}
+.title-bar .threeWinBtn {
+	position: relative !important;
+	width: 100px !important;
+	height: 28px;
+	cursor: pointer;
+	margin-left: 4px !important;
+	-webkit-app-region: no-drag;
+}
+.threeWinBtn ul {
+	width: 20px;
+	height: 20px;
+	float: left;
+	margin: 6px 3px auto;
+	border-radius: 50%;
+	background: var(--win-primary1);
+	transition: all 0.1s ease-in-out;
+}
+.threeWinBtn ul:hover {
+	background: var(--win-secondry1);
+}
+.threeWinBtn ul:last-child:hover {
+	background: rgb(231, 16, 59);
+}
+.ttl-hr {
+	position: absolute;
+	border: none;
+	border-radius: 10px;
+	background: var(--win-primary2) !important ;
+}
+#min > li {
+	margin: 9px 0 0 6px;
+	width: 9px !important;
+	height: 1.5px !important;
+}
+#max > li {
+	border-radius: none !important;
+}
+#max .max-top {
+	margin: 5px 0 0 6px;
+	width: 8px !important;
+	height: 1.2px !important;
+}
+#max .max-btm {
+	margin: 13px 0 0 6px;
+	width: 8px !important;
+	height: 1.2px !important;
+}
+#max .max-lft {
+	margin: 5px 0 0 6px;
+	width: 1px !important;
+	height: 8px !important;
+}
+#max .max-rgt {
+	margin: 5px 0 0 13px;
+	width: 1px !important;
+	height: 8px !important;
+}
+#close > li {
+	margin: 5px 0 0 9px;
+	width: 1.5px !important;
+	height: 11px !important;
+}
+#close > li:first-child {
+	transform: rotateZ(48deg);
+}
+#close > li:last-child {
+	transform: rotateZ(-48deg);
+}
+#close:hover > li,
+#max:hover > li,
+#min:hover > li {
+	background: var(--win-primary3) !important;
+}
+
+/* close title bar mini max close buttons */
+/* ########################################### */
+
+/* ########################################### */
+/* open app Menu function styling */
+.title-bar .win-option {
+	position: relative;
+	width: auto;
+	height: inherit;
+	font-family: var(--win-fontfamily1);
+	font-weight: var(--win-fontweight-titlebar);
+	font-size: var(--win-fontsize-titlebar);
+	float: right;
+	color: var(--win-primary2);
+	-webkit-app-region: no-drag;
+}
+.win-option > ul li {
+	position: relative;
+	/* width: 60px; */
+	float: left;
+	padding: 4px 8px 0;
+	cursor: pointer;
+	text-align: center;
+	transition: all 0.2s linear;
+}
+.win-option > ul li:hover {
+	color: var(--win-primary4);
+}
+
+.win-option > ul li:nth-child(1):hover ~ .menu-hghltr {
+	left:0px;
+	width:63.67px;
+}
+.win-option > ul li:nth-child(2):hover ~ .menu-hghltr {
+	left:63.67px;
+	width:86.08px;
+}
+.win-option > ul li:nth-child(3):hover ~ .menu-hghltr {
+	left: 149.75px;
+	width:78.63px;
+}
+.win-option > ul li:nth-child(4):hover ~ .menu-hghltr {
+	left: 228.38px;
+	width:73.14px;
+}
+.win-option > ul li:nth-child(5):hover ~ .menu-hghltr {
+	left: 0px;
+}
+
+.menu-hghltr {
+	position: absolute !important;
+	bottom: 0px;
+	width:var(--win-menu-highliter-width);
+	left: var(--win-menu-highliter-left);
+	height: 2.4px;
+	padding: 0px !important;
+	background-color: var(--win-primary4);
+	transition: all 0.5s ease-in-out;
+}
+/* open app Menu function styling */
+/* ########################################### */
+
+/* ########################################### */
+/* opening app icon styling */
+.title-bar .win-icon {
+	width: 60px !important;
+	height: 25px !important;
+	float: right;
+	-webkit-app-region: no-drag;
+}
+.win-icon img {
+	margin: -2px 4px 0 0;
+	width: 37px;
+	height: 37px;
+	float: right;
+	transition: all 0.2s linear;
+}
+.win-icon img:hover {
+	width: 40px;
+	height: 40px;
+	margin: -4px 4px 0 0;
+	cursor: pointer;
+}
+
+/* close app icon styling */
+/* ########################################### */
+/* playlist bar css end here */
+/* $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ */ ;

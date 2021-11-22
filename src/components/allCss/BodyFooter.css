@@ -1,0 +1,15 @@
+.side-main-setup {
+  width: 100%;
+  height: var(--win-body-height);
+  color: var(--win-primary2);
+  display: flex;
+
+  /* overflow: hidden; */
+}
+
+/* ###########################Footer.js styling########################################## */
+.footer {
+  width: auto;
+  height: 35px;
+  background: var(--win-titleBar-footer);
+}

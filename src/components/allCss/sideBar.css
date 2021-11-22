@@ -1,0 +1,247 @@
+:root {
+
+}
+.win-sdnav {
+  width: var(--win-sidebar-width);
+  height: var(--win-body-height);
+  background: var(--win-sidebar-bgcolor);
+  /* resize: both !important; */
+  overflow: hidden;
+}
+
+/* ################################################################################################### */
+/* area of profile picture show updtae and show username */
+.user-prfl {
+  width: 100%;
+  padding: 2px 0;
+  display: grid;
+  grid-template-columns: repeat(4, 0fr);
+}
+.user-prfl > ul {
+  position: relative;
+  margin: 4px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--win-primary1);
+  box-shadow: -1px 1px 2px var(--win-boxShd1_1),
+    1px -1px 2px var(--win-boxShd1_2);
+}
+.user-prfl > ul li:nth-child(1) {
+  position: relative;
+  width: 55px;
+  height: 55px;
+  top: 2.5px !important;
+  left: 2.5px !important;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background: white; */
+  box-shadow: -1px -1px 2px var(--win-boxShd1_2),
+    1px 1px 2px var(--win-boxShd1_1), -1px -1px 2px var(--win-boxShd1_2),
+    1px 1px 2px var(--win-boxShd1_1);
+}
+.user-prfl > ul li img {
+  position: absolute;
+  width: 55px;
+  height: 55px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.user-prfl > ul li:nth-child(1) > label {
+  position: relative;
+  top: 2.5px !important;
+  left: -0.8px !important;
+  width: 55px;
+  height: 55px;
+  overflow: hidden;
+  display: none;
+}
+
+.user-prfl > ul li:nth-child(1) > label:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  background-color: var(--win-userProfile-hoveranim2);
+  opacity: 0;
+  animation: toSelect 2s linear 1s infinite;
+}
+.user-prfl > ul li:nth-child(1) > label:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  background-color: var(--win-userProfile-hoveranim1);
+  opacity: 0;
+  animation: toSelect 2s linear infinite;
+}
+@keyframes toSelect {
+  from,
+  to {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.8;
+  }
+  50% {
+    top: 25%;
+    left: 25%;
+    right: 25%;
+    bottom: 25%;
+    opacity: 0.4;
+  }
+  99% {
+    top: 50%;
+    left: 50%;
+    right: 50%;
+    bottom: 50%;
+    opacity: 0;
+  }
+}
+.user-prfl > ul li input {
+  position: absolute;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 9 !important;
+  opacity: 0;
+}
+.user-prfl > ul li:nth-child(2) {
+  position: relative;
+  top: -8px !important;
+  left: 35px !important;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 10 !important;
+}
+.user-prfl > ul li label {
+  position: absolute;
+  font-family: Cagliostro;
+  font-weight: 700;
+  margin-top: -5px;
+  margin-left: 5px;
+  border: none;
+  font-size: 22px;
+  color: var(--win-menu-highliter);
+}
+.user-prfl > ul li label:hover {
+  color: var(--win-primary3);
+}
+
+/* $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ */
+.user-prfl .profilesub-uname-disp {
+  position: relative;
+  font-size: larger;
+  width: calc(var(--win-sidebar-width) - 90px);
+  left: 20px;
+  display: flex;
+  justify-content: center !important;
+  align-items: center;
+  font-family: var(--win-fontfamily1);
+  font-weight: 800;
+  /* height: 20px; */
+  /* background-color: aqua; */
+}
+.user-prfl .profilesub-uname-disp  > input{
+  width: 60%;
+  height: 25px;
+  font-weight: 700;
+  font-size: 17px ;
+  letter-spacing: 0.8px;
+  padding: 4px;
+  background: transparent;
+  color: var(--win-primary4);
+  font-family: var(--win-fontfamily4);
+  border: 2px solid ;
+  border-radius: 4px !important;
+}
+
+/* area of profile picture show updtae and show username*/
+/* ################################################################################################### */
+
+.menu-heading {
+  width: var(--win-sidebar-width) !important;
+  padding: 5px 0px;
+  background: rgba(0, 0, 0, 0.37);
+  font-family: var(--win-fontfamily5);
+  font-size: 20px;
+  text-align: left;
+  padding-left: 20px;
+}
+.playlistFiles{
+  width: var(--win-sidebar-width) !important;
+  height: calc(100vh - 180px);
+  overflow-x: auto;
+  background: rgba(0, 0, 0, 0.37);
+  font-size: 18px;
+  transform-style: preserve-3d;
+  perspective: 100px;
+  font-family: var(--win-fontfamily1);
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+.playlistFiles > ul{
+  position: relative;
+  width: calc(var(--win-sidebar-width) - 50px);
+  height: 35px;
+  margin: 25px auto ;
+  border-radius: 4px;
+  background-color: var(--win-secondry2);
+  display: flex;
+  align-items: center;
+  padding-left: 14px;
+}
+.playlistFiles > ul::after{
+  /* dont remove after property used for onclick property of ul to play file */
+  content: "";
+  position: absolute;
+  top:0px;
+  left:0px;
+  right:0px;
+  bottom: 0px;
+  /* background-color: red; */
+}
+.playlistFiles > ul:hover{
+    cursor: pointer;
+    color: var(--win-primary3);
+    /* transform-origin: center;
+    transform: translateZ(1px); */
+  }
+  .playlistFiles > ul > div{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  right:-10px;
+  top: -8px;
+  border-radius: 50%;
+  background-color: var(--win-titleBar-footer);
+  transition: all.2s linear;
+}
+.playlistFiles > ul:hover > div{
+  transform-origin: center;
+  width: 53px;
+  height: 53px;
+  top :-10px;
+}
+#playlist-play{
+  margin-top: 15px;
+  margin-left: 18px;
+  font-size: 20px;
+  transition: all.2s linear;
+}
+.playlistFiles > ul:hover >div > #playlist-play{
+  margin-top: 17px;
+}

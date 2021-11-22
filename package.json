@@ -1,0 +1,96 @@
+{
+  "name": "Concord",
+  "version": "1.16.0",
+  "description": "Concord Application for paly audio file make playlist and play.",
+  "license": "MIT",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexdevero/electron-react-webpack-boilerplate.git"
+  },
+  "homepage": "",
+  "bugs": {
+    "url": "https://github.com/alexdevero/electron-react-webpack-boilerplate/issues"
+  },
+  "author": {
+    "name": "lieTester",
+    "email": "lieTester.00@gmail.com",
+    "url": "https://github.com/lieTester"
+  },
+  "keywords": [
+    "app",
+    "boilerplate",
+    "electron",
+    "open",
+    "open-source",
+    "postcss",
+    "react",
+    "reactjs",
+    "source",
+    "webpack"
+  ],
+  "engines": {
+    "node": ">=9.0.0",
+    "npm": ">=5.0.0",
+    "yarn": ">=1.0.0"
+  },
+  "browserslist": [
+    "last 4 versions"
+  ],
+  "main": "main.js",
+  "scripts": {
+    "react": "react-scripts start",
+    "prod": "cross-env NODE_ENV=production webpack --mode production --config webpack.build.config.js && electron --noDevServer . ",
+    "start": "cross-env NODE_ENV=development webpack serve --hot --host 0.0.0.0 --config=./webpack.dev.config.js --mode development && craco start",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.build.config.js --mode production && craco build",
+    "watch-css": "npx tailwindcss build -i src/styles/index.css -o src/styles/main.css --watch",
+    "build-css": "npx tailwindcss build  -o src/styles/main.css",
+    "package32": "npm run build",
+    "package64": "npm run build",
+    "package-mac": "npm run build",
+    "package-linux": "npm run build",
+    "postpackage-mac": "electron-packager ./ --out=./release_builds --overwrite --platform=darwin --arch=x64 --icon=assets/icon.png ",
+    "postpackage-linux" : "electron-packager ./ --out=./release_builds --overwrite --platform=linux --arch=x64 --icon=assets/icon.png ",
+    "postpackage32": "electron-packager ./ --out=./release_builds --overwrite --platform=win32 --arch=ia32 --icon=assets/icon.ico",
+    "postpackage64": "electron-packager ./ --out=./release_builds --overwrite --platform=win32 --arch=x64 --icon=assets/icon.ico"
+  },
+  "dependencies": {
+    "@craco/craco": "^6.3.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.16",
+    "buffer-loader": "^0.1.0",
+    "fs-extra": "^10.0.0",
+    "node-id3": "^0.2.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "sqlite3": "^5.0.2",
+    "uuidv4": "^6.2.12"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
+    "@babel/preset-react": "^7.14.5",
+    "autoprefixer": "^10.3.6",
+    "babel-loader": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.2.0",
+    "electron": "^13.1.9",
+    "electron-devtools-installer": "^3.2.0",
+    "electron-packager": "^15.3.0",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.3.2",
+    "mini-css-extract-plugin": "^2.2.0",
+    "postcss": "^8.3.8",
+    "postcss-import": "^14.0.2",
+    "postcss-loader": "^6.1.1",
+    "postcss-nested": "^5.0.6",
+    "postcss-preset-env": "^6.7.0",
+    "postcss-pxtorem": "^6.0.0",
+    "style-loader": "^3.2.1",
+    "tailwindcss": "^2.2.16",
+    "webpack": "^5.49.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
+  }
+}

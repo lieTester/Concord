@@ -1,0 +1,25 @@
+@font-face {
+  src: url("./AveriaSansLibre-Bold.ttf") ;
+  font-family: AveriaSansLibre;
+}
+@font-face {
+  src: url("./Cagliostro-Regular.ttf");
+  font-family: Cagliostro;
+}
+@font-face {
+  src: url("./AveriaSansLibre-Regular.ttf");
+  font-family: AveriaSansLibre-Regular;
+}
+
+@font-face {
+  src: url("./Anton-Regular.ttf");
+  font-family: Anton-Regular;
+}
+@font-face {
+  src: url("./FredokaOne-Regular.ttf");
+  font-family: FredokaOne-Regular;
+}
+@font-face {
+  src: url("./Sofia Pro Regular.ttf");
+  font-family: Sofia-Pro-Black;
+}
