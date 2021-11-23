@@ -59,7 +59,7 @@ function SideBar() {
 				...filecontext.fileToPlay,
 				// files:filecontext.fileToPlay.files,
 				currentPlay: e.target.getAttribute('file'),
-				currentPlayIndex: e.target.getAttribute('keyid'),
+				currentPlayIndex: parseInt(e.target.getAttribute('keyid')),
 				fileAccept:1
 			});
 		}

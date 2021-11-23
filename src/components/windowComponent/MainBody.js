@@ -1,4 +1,4 @@
-import React, { useContext,useState, useRef ,useEffect} from "react";
+import React, { useContext,useState, useRef ,useEffect,useReducer} from "react";
 import { menuContext, userContext, fileContext } from "../App";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBackward, faForward,faPlay,faPause, faRandom, faRedo  } from '@fortawesome/free-solid-svg-icons'
@@ -8,6 +8,13 @@ import AddFiles from "./NavigateData/AddFiles";
 import History from "./NavigateData/History";
 import { Document } from "postcss";
 
+const ppp ={
+	play:0
+}
+const setppp = (e)=>{
+	ppp.play = ppp.play ? 0 : 1 
+	return ppp;
+}
 
 
 function MainBody() {
@@ -21,13 +28,15 @@ function MainBody() {
 	
 	let m_play;
 	let m_pause;
+	var cP;
+	var cPI;
 	let m_playtm;
 	let currentPointTime
 	let totalTimeDuration
 	
-	const [ppp, setppp] = useState({
-		play:0
-	});
+
+	const [playPauseState, playPausedispatch] = useReducer(setppp, ppp);
+
 	const [fileDuration, setfileDuration] = useState({
 		totalDuration:'00:00',currentPoint:'00:00'
 	});
@@ -58,9 +67,8 @@ function MainBody() {
 	const handleFileChange = (e) => {
 
 		//below condition is only for when file src change externally by user
-		// setppp({ ...ppp, play:1 });
 
-		if (ppp.play) m_audio.current.play();
+		if (playPauseState.play) m_audio.current.play();
 		
 		if (filecontext.fileToPlay.fileAccept) {
 			let path = filecontext.fileToPlay.currentPlay;
@@ -103,36 +111,46 @@ function MainBody() {
 		});
 
 		if (m_playtm == 100) {
-			m_audio.current.currentTime = 0;
-			setppp({ ...ppp, play: ppp.play ? 0 : 1 });
+			// m_audio.current.currentTime = 0;
+			// playPausedispatch();
+			setTimeout(() => {
+				playForward();
+			}, 500);
 		}
 	}
 
-	const playpause = (e) => { 
-		e.preventDefault();
-		setppp({ ...ppp, play: ppp.play ? 0 : 1 });
-		console.log(m_audio);
-		//i use not operater here specially because usestate change not work inside
-		// if condition instantly but in dom elements its working
-		if (!ppp.play) {
+	const checkPlayPauseState =(e)=>{
+		console.log(playPauseState.play)
+		if (playPauseState.play) {
 			m_audio.current.play();
 		} else {
 			m_audio.current.pause();
 		}
 	}
+	const playpause = (e) => { 
+		e.preventDefault();
+		console.log(m_audio,playPauseState);
+		
+		playPausedispatch();
+		//i use not operater here specially because usestate change not work inside
+		// if condition instantly but in dom elements its working
+		setTimeout(() => {
+			checkPlayPauseState();
+		}, 500);
+	}
 
-	var cP
-	var cPI
+	
 	const playForward =(e)=>{
-		// console.log(filecontext.fileToPlay.files);
 		cP=filecontext.fileToPlay.files;
 		cPI=filecontext.fileToPlay.currentPlayIndex;
+		// console.log(filecontext.fileToPlay.files,cPI === cP.length-1,cPI, cP.length-1);
 		if(cPI === cP.length-1){
 			filecontext.setfileToPlay({
 				...filecontext.fileToPlay,
 				currentPlay:cP[0].namePlayfilePath,
 				currentPlayIndex:0
 			})
+			playPausedispatch();
 		}else{
 			filecontext.setfileToPlay({
 				...filecontext.fileToPlay,
@@ -140,6 +158,10 @@ function MainBody() {
 				currentPlayIndex:cPI+1
 			})
 		}
+		setTimeout(() => {
+			m_audio.current.currentTime = 0;
+			checkPlayPauseState();
+		}, 200);
 	}
 	
 	const playBackward =(e)=>{
@@ -151,12 +173,8 @@ function MainBody() {
 				currentPlay:cP[cPI-1].namePlayfilePath,
 				currentPlayIndex:cPI-1
 			})
-		}else{
-			filecontext.setfileToPlay({
-				...filecontext.fileToPlay,
-				currentPlay:cP[cP.length-1].namePlayfilePath,
-				currentPlayIndex:cP.length-1
-			})
+			m_audio.current.currentTime = 0;
+			checkPlayPauseState();
 		}
 		// console.log(filecontext.fileToPlay.files.length);
 	}
