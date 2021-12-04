@@ -113,10 +113,8 @@ function MainBody() {
 		});
 
 		if (m_playtm == 100) {
-			// m_audio.current.currentTime = 0;
-			// playPausedispatch();
-			// console.log(playLoop.current.firstChild.getAttribute('idcheck'));
-			if(playLoop.current.firstChild.getAttribute('idcheck')=== '1'){
+			console.log(playLoop.current.getAttribute('idcheck'))
+			if(playLoop.current.getAttribute('idcheck') === '1'){
 				m_audio.current.currentTime = 0;
 				m_audio.current.play();
 			}else{
@@ -153,7 +151,6 @@ function MainBody() {
 		e.preventDefault()
 		try {
 			var idCheck=e.target.getAttribute('idcheck');
-			console.log(e.target.getAttribute('idcheck'));
 			if(idCheck === '1'){
 				e.target.setAttribute('idcheck', '0')
 				e.target.style="color: var(--win-primary-text) "
@@ -161,6 +158,7 @@ function MainBody() {
 				e.target.setAttribute('idcheck', '1')
 				e.target.style=" color:var(--win-secondry5) "
 			}
+			console.log(e.target.getAttribute('idcheck'));
 		} catch (error) {
 			console.log(error);
 		}

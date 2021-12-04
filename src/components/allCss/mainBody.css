@@ -242,10 +242,21 @@ input[type=range]::-moz-range-thumb:active {
   margin-top: 15px !important;
   justify-content: space-around;
 }
-
+.m-liked-repeat > li{
+  position: relative;
+}
+.m-liked-repeat > li:after{
+  content: "";
+  position: absolute;
+  top:0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  /* background-color: #0f161e; */
+}
 .m-liked-repeat > li:hover{
   cursor: pointer;
-  color: var(--win-secondry4);
+  color: var(--win-secondry4) !important;
 }
 
 /* ########################################################################################################################### */
@@ -448,7 +459,7 @@ input[type=range]::-moz-range-thumb:active {
   font-size: 16px;
   font-weight: 500;
   font-family: var(--win-fontfamily2);
-  height:calc(var(--win-body-height2) - 90px);
+  height: calc(var(--win-body-height2) - 90px);
 }
 .playlist-detail > ul{
   border: 1px solid;
