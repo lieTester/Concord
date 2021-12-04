@@ -8,13 +8,13 @@ import AddFiles from "./NavigateData/AddFiles";
 import History from "./NavigateData/History";
 import { Document } from "postcss";
 
-const ppp ={
-	play:0
-}
+const ppp ={ play:0}
 const setppp = (e)=>{
 	ppp.play = ppp.play ? 0 : 1 
 	return ppp;
 }
+
+
 
 
 function MainBody() {
@@ -25,6 +25,7 @@ function MainBody() {
 	
 	const playerProgressRef = useRef();
 	const m_audio = useRef();
+	const playLoop = useRef();
 	
 	let m_play;
 	let m_pause;
@@ -35,13 +36,14 @@ function MainBody() {
 	let totalTimeDuration
 	
 
+	
 	const [playPauseState, playPausedispatch] = useReducer(setppp, ppp);
 
 	const [fileDuration, setfileDuration] = useState({
 		totalDuration:'00:00',currentPoint:'00:00'
 	});
 	const [volumeValue, setvolumeValue] = useState({
-		sliderValuse:100
+		sliderValuse:20
 	});
 
 
@@ -113,9 +115,15 @@ function MainBody() {
 		if (m_playtm == 100) {
 			// m_audio.current.currentTime = 0;
 			// playPausedispatch();
-			setTimeout(() => {
-				playForward();
-			}, 500);
+			// console.log(playLoop.current.firstChild.getAttribute('idcheck'));
+			if(playLoop.current.firstChild.getAttribute('idcheck')=== '1'){
+				m_audio.current.currentTime = 0;
+				m_audio.current.play();
+			}else{
+				setTimeout(() => {
+					playForward();
+				}, 500);
+			}
 		}
 	}
 
@@ -139,7 +147,24 @@ function MainBody() {
 		}, 500);
 	}
 
-	
+
+	const makePlayLoop =(e)=>{
+		// console.log(e, playLoopState);
+		e.preventDefault()
+		try {
+			var idCheck=e.target.getAttribute('idcheck');
+			console.log(e.target.getAttribute('idcheck'));
+			if(idCheck === '1'){
+				e.target.setAttribute('idcheck', '0')
+				e.target.style="color: var(--win-primary-text) "
+			}else{
+				e.target.setAttribute('idcheck', '1')
+				e.target.style=" color:var(--win-secondry5) "
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	}
 	const playForward =(e)=>{
 		cP=filecontext.fileToPlay.files;
 		cPI=filecontext.fileToPlay.currentPlayIndex;
@@ -244,8 +269,8 @@ function MainBody() {
 							</li>
 						</ul>
 						<ul className="m-liked-repeat mn-flx">
-							<li>
-								<FontAwesomeIcon icon={faRedo} />
+							<li  ref={playLoop} onClick={makePlayLoop} idcheck='0'> 
+								<FontAwesomeIcon icon={faRedo}  />
 							</li>
 							<li>
 								<FontAwesomeIcon icon={faRandom} />
