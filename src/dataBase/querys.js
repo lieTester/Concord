@@ -22,7 +22,7 @@ queryManager.CreateIfNotExist = async function (callback) {
             (err) => {
                 if (err) { console.log(err) }
                 else {
-                    db.run("INSERT OR REPLACE INTO userPlayfiles (idPlayfile,namePlayfile,namePlayfilePath) VALUES(1,'Despacito_320(PaglaSongs).mp3','music/Despacito_320(PaglaSongs).mp3') ",(err)=>{if(err)console.log(err)})
+                    db.run("INSERT OR REPLACE INTO userPlayfiles (idPlayfile,namePlayfile,namePlayfilePath) VALUES(1,'Despacito_320(PaglaSongs).mp3','music/Despacito_320(PaglaSongs).mp3') , (2,'Lovely(PagalWorld).mp3','music/Lovely(PagalWorld).mp3') ",(err)=>{if(err)console.log(err)})
                 }
             }
         )
@@ -31,7 +31,7 @@ queryManager.CreateIfNotExist = async function (callback) {
             (err) => {
                 if (err) { console.log(err) }
                 else {
-                    db.run("INSERT OR REPLACE INTO playerFileLists (idPlaylist,idPlayfile) VALUES(1,1) ", (err) => { if (err) console.log(err) })
+                    db.run("INSERT OR REPLACE INTO playerFileLists (idPlaylist,idPlayfile) VALUES(1,1) , (1,2) ", (err) => { if (err) console.log(err) })
                 }
             }
         )
