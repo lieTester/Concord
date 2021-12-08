@@ -42,7 +42,7 @@
     "react": "react-scripts start",
     "prod": "cross-env NODE_ENV=production webpack --mode production --config webpack.build.config.js && electron --noDevServer . ",
     "start": "cross-env NODE_ENV=development webpack serve --hot --host 0.0.0.0 --config=./webpack.dev.config.js --mode development && craco start",
-    "build": "cross-env NODE_ENV=production webpack --config webpack.build.config.js --mode production && craco build",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.build.config.js --mode production ",
     "watch-css": "npx tailwindcss build -i src/styles/index.css -o src/styles/main.css --watch",
     "build-css": "npx tailwindcss build  -o src/styles/main.css",
     "package32": "npm run build",
