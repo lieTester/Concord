@@ -9,7 +9,7 @@ var queryManager = {}
 
 queryManager.CreateIfNotExist = async function (callback) {
     try {
-        db.run('CREATE TABLE IF NOT EXISTS userPlaylists ("idPlaylist"	INTEGER NOT NULL,"namePlaylist"	TEXT UNIQUE,"filesCount" INTEGER NOT NULL UNIQUE,"playTimes" INTEZER UNIQUE,"dateCreated"	TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,"lastUsed"	TEXT UNIQUE, PRIMARY KEY("idPlaylist" AUTOINCREMENT) )',
+        db.run('CREATE TABLE IF NOT EXISTS userPlaylists ("idPlaylist"	INTEGER NOT NULL,"namePlaylist"	TEXT UNIQUE,"filesCount" INTEGER NOT NULL ,"playTimes" INTEZER ,"dateCreated"	TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,"lastUsed"	TEXT UNIQUE, PRIMARY KEY("idPlaylist" AUTOINCREMENT) )',
             (err) => {
                 if (err) { console.log(err) }
                 else {
