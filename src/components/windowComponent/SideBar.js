@@ -53,7 +53,7 @@ function SideBar() {
 	const changeFileToplay = (e) => {
 		console.log(e.target.getAttribute('file'),e.target.getAttribute('keyid'));
 		e.preventDefault();
-		
+
 		if (e.target.getAttribute('file')) {
 			filecontext.setfileToPlay({
 				...filecontext.fileToPlay,
@@ -119,7 +119,7 @@ function SideBar() {
 					Object.entries(filecontext.fileToPlay.files).map((key, i) => {
 						return (
 							<ul key={i} keyid={i} onClick={changeFileToplay} file={key[1].namePlayfilePath}>
-								<li> {key[1].namePlayfile} </li>
+								<li > {key[1].namePlayfile} </li>
 								<div onClick={changeFileToplay} key={i}  keyid={i} >
 									<FontAwesomeIcon icon={faPlay}  id="playlist-play" />
 								</div>
@@ -127,7 +127,7 @@ function SideBar() {
 						)
 					})
 				}
-				
+
 				{/* <ul onClick={changeFileToplay} file={"E:\\My Gitub Repos\\Electron_applications\\concord Up\\dist\\music\\Despacito_320(PaglaSongs).mp3"}>
 					< li>Free-Death machine</li>
 					<div >
