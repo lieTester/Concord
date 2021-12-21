@@ -10,23 +10,20 @@ import { Document } from "postcss";
 
 const ppp ={ play:0}
 const setppp = (e)=>{
-	ppp.play = ppp.play ? 0 : 1 
+	ppp.play = ppp.play ? 0 : 1
 	return ppp;
 }
-
-
-
 
 function MainBody() {
 
 	const menucontext = useContext(menuContext);
 	const usercontext = useContext(userContext);
 	const filecontext = useContext(fileContext);
-	
+
 	const playerProgressRef = useRef();
 	const m_audio = useRef();
 	const playLoop = useRef();
-	
+
 	let m_play;
 	let m_pause;
 	var cP;
@@ -34,9 +31,9 @@ function MainBody() {
 	let m_playtm;
 	let currentPointTime
 	let totalTimeDuration
-	
 
-	
+
+
 	const [playPauseState, playPausedispatch] = useReducer(setppp, ppp);
 
 	const [fileDuration, setfileDuration] = useState({
@@ -63,7 +60,7 @@ function MainBody() {
 		});
 	};
 
-	
+
 
 
 	const handleFileChange = (e) => {
@@ -71,7 +68,7 @@ function MainBody() {
 		//below condition is only for when file src change externally by user
 
 		if (playPauseState.play) m_audio.current.play();
-		
+
 		if (filecontext.fileToPlay.fileAccept) {
 			let path = filecontext.fileToPlay.currentPlay;
 			filecontext.setfileToPlay({
@@ -91,7 +88,7 @@ function MainBody() {
 		});
 	}
 	const setTimeDurations = (e) => {
-		
+
 		let calulcation = Math.floor(e / 60);
 		let min= (calulcation < 10)? "0"+calulcation :calulcation;
 		let sec = (e%60 < 10)? "0"+(e%60) : (e%60);
@@ -103,7 +100,7 @@ function MainBody() {
 		const { duration, currentTime } = m_audio.current;
 		m_playtm = ((currentTime / duration) * 100);
 		document.querySelector('.progress-bar > ul >li:nth-child(2) >span').style.width = `${m_playtm}%`;
-		
+
 		currentPointTime = setTimeDurations(Math.round( currentTime));
 		totalTimeDuration = setTimeDurations(Math.floor(duration));
 		setfileDuration({
@@ -133,16 +130,16 @@ function MainBody() {
 			m_audio.current.pause();
 		}
 	}
-	const playpause = (e) => { 
+	const playpause = (e) => {
 		e.preventDefault();
 		console.log(m_audio,playPauseState);
-		
+
 		playPausedispatch();
 		//i use not operater here specially because usestate change not work inside
 		// if condition instantly but in dom elements its working
 		setTimeout(() => {
 			checkPlayPauseState();
-		}, 500);
+		}, 100);
 	}
 
 
@@ -186,7 +183,7 @@ function MainBody() {
 			checkPlayPauseState();
 		}, 200);
 	}
-	
+
 	const playBackward =(e)=>{
 		cP=filecontext.fileToPlay.files;
 		cPI=filecontext.fileToPlay.currentPlayIndex;
@@ -253,28 +250,29 @@ function MainBody() {
 						</ul>
 						<ul>
 							<li className="m-previous-play" onClick={playBackward}>
-								<FontAwesomeIcon icon={faBackward} />		
-							</li> 
+								<FontAwesomeIcon icon={faBackward} />
+							</li>
 							<li className="m-play-pause" onClick={playpause}>
-								{
-									ppp.play
+								{/* {
+									playPauseState.play
 									? <FontAwesomeIcon icon={faPause} id="m-pause" />
 									: <FontAwesomeIcon icon={faPlay} id="m-play" />
-								}
+								} */}
+                <FontAwesomeIcon icon={playPauseState.play ? faPause : faPlay} id={playPauseState.play?"m-play":"m-play"} />
 							</li>
 							<li className="m-next-play" onClick={playForward}>
 								<FontAwesomeIcon icon={faForward} />
 							</li>
 						</ul>
 						<ul className="m-liked-repeat mn-flx">
-							<li  ref={playLoop} onClick={makePlayLoop} idcheck='0'> 
+							<li  ref={playLoop} onClick={makePlayLoop} idcheck='0'>
 								<FontAwesomeIcon icon={faRedo}  />
 							</li>
 							<li>
 								<FontAwesomeIcon icon={faRandom} />
 							</li>
 						</ul>
-						
+
 					</div>
 
 					<audio id="play" ref={m_audio} onTimeUpdate={updateprogress} src={filecontext.fileToPlay.currentPlay}>
