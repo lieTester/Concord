@@ -1,5 +1,4 @@
 :root {
-
 }
 .win-sdnav {
   width: var(--win-sidebar-width);
@@ -155,17 +154,17 @@
   /* height: 20px; */
   /* background-color: aqua; */
 }
-.user-prfl .profilesub-uname-disp  > input{
+.user-prfl .profilesub-uname-disp > input {
   width: 60%;
   height: 25px;
   font-weight: 700;
-  font-size: 17px ;
+  font-size: 17px;
   letter-spacing: 0.8px;
   padding: 4px;
   background: transparent;
   color: var(--win-primary4);
   font-family: var(--win-fontfamily4);
-  border: 2px solid ;
+  border: 2px solid;
   border-radius: 4px !important;
 }
 
@@ -181,7 +180,7 @@
   text-align: left;
   padding-left: 20px;
 }
-.playlistFiles{
+.playlistFiles {
   width: var(--win-sidebar-width) !important;
   height: calc(100vh - 180px);
   overflow-x: auto;
@@ -193,55 +192,65 @@
   font-weight: 800;
   letter-spacing: 1px;
 }
-.playlistFiles > ul{
+.playlistFiles > ul {
   position: relative;
   width: calc(var(--win-sidebar-width) - 50px);
   height: 35px;
-  margin: 25px auto ;
+  margin: 25px auto;
   border-radius: 4px;
   background-color: var(--win-secondry2);
   display: flex;
   align-items: center;
   padding-left: 14px;
 }
-.playlistFiles > ul::after{
+.playlistFiles > ul::after {
   /* dont remove after property used for onclick property of ul to play file */
   content: "";
   position: absolute;
-  top:0px;
-  left:0px;
-  right:0px;
+  top: 0px;
+  left: 0px;
+  right: 0px;
   bottom: 0px;
   /* background-color: red; */
 }
-.playlistFiles > ul:hover{
-    cursor: pointer;
-    color: var(--win-primary3);
-    /* transform-origin: center;
+.playlistFiles > ul:hover {
+  cursor: pointer;
+  color: var(--win-primary3);
+  /* transform-origin: center;
     transform: translateZ(1px); */
-  }
-  .playlistFiles > ul > div{
+}
+.playlistFiles > ul > li {
+  width: auto !important;
+  height: inherit;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+}
+.playlistFiles > ul > li::-webkit-scrollbar {
+  height: 2px;
+}
+.playlistFiles > ul > div {
   position: absolute;
   width: 50px;
   height: 50px;
-  right:-10px;
+  right: -10px;
   top: -8px;
   border-radius: 50%;
   background-color: var(--win-titleBar-footer);
   transition: all.2s linear;
 }
-.playlistFiles > ul:hover > div{
+.playlistFiles > ul:hover > div {
   transform-origin: center;
   width: 53px;
   height: 53px;
-  top :-10px;
+  top: -10px;
 }
-#playlist-play{
+#playlist-play {
   margin-top: 15px;
   margin-left: 18px;
   font-size: 20px;
   transition: all.2s linear;
 }
-.playlistFiles > ul:hover >div > #playlist-play{
+.playlistFiles > ul:hover > div > #playlist-play {
   margin-top: 17px;
 }
