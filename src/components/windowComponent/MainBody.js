@@ -181,7 +181,7 @@ function MainBody() {
 		setTimeout(() => {
 			m_audio.current.currentTime = 0;
 			checkPlayPauseState();
-		}, 200);
+		}, 100);
 	}
 
 	const playBackward =(e)=>{
@@ -195,7 +195,11 @@ function MainBody() {
 			})
 			m_audio.current.currentTime = 0;
 			checkPlayPauseState();
-		}
+    }
+    setTimeout(() => {
+      m_audio.current.currentTime = 0;
+      checkPlayPauseState();
+    }, 100);
 		// console.log(filecontext.fileToPlay.files.length);
 	}
 
