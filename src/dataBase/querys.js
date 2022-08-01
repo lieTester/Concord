@@ -13,7 +13,7 @@ queryManager.CreateIfNotExist = async function (callback) {
         if (err) {
           console.log(err);
         } else {
-          db.run("INSERT OR REPLACE INTO userPlaylists (idPlaylist,namePlaylist,filesCount,playTimes) VALUES(1,'tester',1,0) ",
+          db.run("INSERT OR REPLACE INTO userPlaylists (idPlaylist,namePlaylist,filesCount,playTimes) VALUES(1,'tester',3,0) ",
             (err) => {
               if (err) console.log(err, "first");
             }
@@ -27,17 +27,18 @@ queryManager.CreateIfNotExist = async function (callback) {
         if (err) {
           console.log(err);
         } else {
-          var des;
-          var lvl;
+          var songs=[];
           if (process.env.NODE_ENV === "development") {
-            des = path.resolve("./dist/","music/Despacito_320(PaglaSongs).mp3");
-            lvl = path.resolve("./dist/", "music/Lovely(PagalWorld).mp3");
+            songs[0] = path.resolve("./dist/", "music/Valence - Infinite [NCS Release].mp3");
+            songs[1] = path.resolve("./dist/","music/Despacito_320(PaglaSongs).mp3");
+            songs[2] = path.resolve("./dist/", "music/Lovely(PagalWorld).mp3");
           } else {
-            des = path.resolve( "./resources/app/dist/", "music/Despacito_320(PaglaSongs).mp3");
-            lvl = path.resolve("./resources/app/dist/","music/Lovely(PagalWorld).mp3");
+            songs[0] = path.resolve("./resources/app/dist/","music/Valence - Infinite [NCS Release].mp3");
+            songs[1] = path.resolve("./resources/app/dist/", "music/Despacito_320(PaglaSongs).mp3");
+            songs[2] = path.resolve("./resources/app/dist/","music/Lovely(PagalWorld).mp3");
           }
           console.log();
-          db.run(`INSERT OR REPLACE INTO userPlayfiles (idPlayfile,namePlayfile,namePlayfilePath) VALUES(1,'Despacito_320(PaglaSongs).mp3','${des}') , (2,'Lovely(PagalWorld).mp3','${lvl}') `,
+          db.run(`INSERT OR REPLACE INTO userPlayfiles (idPlayfile,namePlayfile,namePlayfilePath) VALUES(1,'Valence - Infinite [NCS Release].mp3','${songs[0]}'),(2,'Despacito_320(PaglaSongs).mp3','${songs[1]}') , (3,'Lovely(PagalWorld).mp3','${songs[2]}') `,
             (err) => {
               if (err) console.log(err);
             }
@@ -51,7 +52,7 @@ queryManager.CreateIfNotExist = async function (callback) {
         if (err) {
           console.log(err);
         } else {
-          db.run("INSERT OR REPLACE INTO playerFileLists (idPlaylist,idPlayfile) VALUES(1,1) , (1,2) ",
+          db.run("INSERT OR REPLACE INTO playerFileLists (idPlaylist,idPlayfile) VALUES(1,1) , (1,2),(1,3) ",
             (err) => {
               if (err) console.log(err);
             }
@@ -80,7 +81,7 @@ queryManager.CreateIfNotExist = async function (callback) {
             } else {
               if (row.length) {
                 var currentPlaylist = row[0].lastplaylist;
-                console.log(currentPlaylist, "sfsdfsf");
+                // console.log(currentPlaylist, "sfsdfsf");
                 db.get(`select idPlaylist from userPlaylists where namePlaylist = '${currentPlaylist}'`,
                   (err, id) => {
                     if (err) {
@@ -91,7 +92,7 @@ queryManager.CreateIfNotExist = async function (callback) {
                           if (err) console.log(err);
                           else {
                             callback(["reArrangedPlaylist", row[0], data]);
-                            console.log(data, "notExist");
+                            console.log(data[0], "only single finle name of plalist return");
                           }
                         }
                       );
@@ -120,7 +121,7 @@ queryManager.CreateIfNotExist = async function (callback) {
                                   if (err) console.log(err);
                                   else {
                                     callback(["reArrangedPlaylist",row[0],data,]);
-                                    console.log(data, "notExist");
+                                    console.log(data[0], "only single finle name of plalist return");
                                   }
                                 }
                               );
@@ -255,7 +256,14 @@ queryManager.re_arrangePlaylist = function (user, callback) {
                   console.log(err);
                 } else {
                   db.run(`Update userPlaylists SET lastUsed = (current_timestamp) where namePlaylist = "${user[3]}"`);
-                  db.run(`Insert INTO History (nameHistfile, Type, lastPlayed) VALUES("${user[3]}","playlist",current_timestamp)`);
+                  db.get(`select idHist from History where nameHistfile='${user[3]}' `,(err,row)=>{
+                    if(err || row ==null){
+                      console.log(err);
+                      db.run(`Insert INTO History (nameHistfile, Type, lastPlayed) VALUES("${user[3]}","playlist",current_timestamp)`);
+                    }else{
+                      db.run(`Update History SET lastPlayed = (current_timestamp) where nameHistfile = "${user[3]}"`);
+                    }  
+                  })
                 }
               });
               callback(["reArrangedPlaylist", row[0], data]);
@@ -398,6 +406,24 @@ queryManager.addFilesToPlaylist = function (user, callback) {
     }
   });
   stmt.finalize();
+};
+
+
+
+queryManager.DeletePlaylist=function (user, callback) {
+  db.run(`delete from userPlaylists WHERE idPlaylist=${user[1]}`,
+      (err) => {
+      if (err) console.log(err);
+      else callback(["PlaylistDeleted"]);
+  });
+};
+
+queryManager.DeleteHistory=function(user,callback){
+  db.run(`delete from History WHERE idHist=${user[1]}`,
+      (err) => {
+      if (err) console.log(err);
+      else callback(["HistoryDeleted"]);
+  });
 };
 
 module.exports = queryManager;

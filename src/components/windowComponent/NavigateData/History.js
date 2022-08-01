@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
-
 import { ipcRenderer } from "electron";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash} from '@fortawesome/free-solid-svg-icons'
 
 function History() {
   const [HistoryView, setHistoryView] = useState({
@@ -19,6 +20,21 @@ function History() {
     });
   }, []);
 
+  // delete History
+  const deleteHistory=(e)=>{
+      console.log('working',e.target);
+      var elemid = "";
+      if (e.target.parentElement.id === "") {
+        elemid = e.target.id;
+      } else {
+        elemid = e.target.parentElement.id;
+      }
+      ipcRenderer.send("logs:MainWindow:call", [
+        "DeleteHistory",
+        elemid,
+      ]);
+  }
+
   return (
     <div className="show-history-area">
       <div className="history-tags">
@@ -27,6 +43,7 @@ function History() {
           <li>Name</li>
           <li>Playlist or File</li>
           <li>Last Played</li>
+          <li>Delete</li>
         </ul>
       </div>
       <div className="history-detail">
@@ -37,6 +54,7 @@ function History() {
               <li>{key[1].nameHistfile}</li>
               <li>{key[1].Type}</li>
               <li>{key[1].lastPlayed}</li>
+              <li id={key[1].idHist} onClick={deleteHistory}><FontAwesomeIcon id={key[1].idHist} icon={faTrash} /></li>
             </ul>
           );
         })}
