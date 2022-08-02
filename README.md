@@ -1,8 +1,8 @@
-## Concord - (Music Player)
+<h2 align="center">Concord - (Music Player)</h2>
 
-<img src="./assets/1659443114827.png" width="30">
+<img src="./assets/Screenshot1.png">
 
-#### Minimal-electron-react-boilerplate (extend verion of [Alex Devero](https://github.com/alexdevero) by [Sanan4li](https://github.com/Sanan4li) )
+### Minimal-electron-react-boilerplate ( extended verion of [Alex Devero](https://github.com/alexdevero) by [Sanan4li](https://github.com/Sanan4li) )
 
 ### Install
 
@@ -15,8 +15,8 @@ git clone https://github.com/lieTester/Concord.git
 #### Install dependencies
 
 ```
-npm install 
-or 
+npm install
+or
 yarn install
 ```
 
@@ -34,5 +34,4 @@ yarn start
 
 ```
 npm run build
-
 ```
