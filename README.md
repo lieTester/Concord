@@ -1,17 +1,16 @@
+### Concord - (Music Player)
 
-## Minimal Electron, React and Webpack boilerplate with TailwindCSS  
-### This is an extended version of Minimal Electron, React and Webpack boilerplate
-### Please check [Minimal Electron, React and Webpack boilerplate](https://github.com/alexdevero/electron-react-webpack-boilerplate) for details. All credit goes to [Alex Devero](https://github.com/alexdevero) for awesome work.
-
+![1659443114827](image/README/1659443114827.png)
 
 
+#### Minimal-electron-react-boilerplate (extend verion of [Alex Devero](https://github.com/alexdevero) by [Sanan4li](https://github.com/Sanan4li) )
 
 ### Install
 
 #### Clone this repo
 
 ```
-git clone https://github.com/Sanan4li/React-Electron-TailwindCSS-Boilerplate.git
+git clone https://github.com/lieTester/Concord.git
 ```
 
 #### Install dependencies
@@ -19,7 +18,9 @@ git clone https://github.com/Sanan4li/React-Electron-TailwindCSS-Boilerplate.git
 ```
 npm install
 ```
+
 or
+
 ```
 yarn install
 ```
@@ -31,30 +32,16 @@ yarn install
 ```
 npm run start
 ```
+
 or
+
 ```
 yarn start
 ```
-#### Build CSS 
+
+#### Build Dist-Folder
 
 ```
-npm run build-css
+npm run build
 
 ```
-
-#### Add Custom Styles
-
-Adding Custom Styles by adding  styles into `src/styles/index.css`.
-
-
-#### JIT Mode (Just In Time Mode)
-
-As you know TailwindCSS 2.2 version supports JIT mode. You can enable it by uncommenting the line # 2 in `tailwind.config.js`. After enabling JIT mode you have to run a separate terminal
-
-#### Use JIT Mode
-
-```
-npm run watch-css
-
-```
-This command will run a watcher waiting for you to change code and it will build css classes based on your code. 
