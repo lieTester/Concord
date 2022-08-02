@@ -1,4 +1,6 @@
-### Concord - (Music Player)![](https://file+.vscode-resource.vscode-cdn.net/e%3A/Projects/Electron/Concord/assets/1659443114827.png)
+## Concord - (Music Player)
+
+<img src="./assets/1659443114827.png" width="30">
 
 #### Minimal-electron-react-boilerplate (extend verion of [Alex Devero](https://github.com/alexdevero) by [Sanan4li](https://github.com/Sanan4li) )
 
