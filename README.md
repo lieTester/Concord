@@ -1,7 +1,7 @@
 <h2 align="center">Concord - (Music Player)
 </h2>
 
-<img src="./assets/Screenshot1.png">
+![1659448568001](image/README/1659448568001.png)
 
 ### Minimal-electron-react-boilerplate ( extended verion of [Alex Devero](https://github.com/alexdevero) by [Sanan4li](https://github.com/Sanan4li) )
 
