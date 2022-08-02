@@ -1,5 +1,4 @@
-### Concord - (Music Player)
-<img src="./assets/1659443114827.png" width="40%">
+### Concord - (Music Player)![](https://file+.vscode-resource.vscode-cdn.net/e%3A/Projects/Electron/Concord/assets/1659443114827.png)
 
 #### Minimal-electron-react-boilerplate (extend verion of [Alex Devero](https://github.com/alexdevero) by [Sanan4li](https://github.com/Sanan4li) )
 
@@ -14,12 +13,8 @@ git clone https://github.com/lieTester/Concord.git
 #### Install dependencies
 
 ```
-npm install
-```
-
-or
-
-```
+npm install 
+or 
 yarn install
 ```
 
@@ -28,12 +23,8 @@ yarn install
 #### Run the app
 
 ```
-npm run start
-```
-
+npm start
 or
-
-```
 yarn start
 ```
 
