@@ -1,5 +1,5 @@
 ### Concord - (Music Player)
-<img src="./image/README/1659443114827.png" width="40%">
+<img src="./assets/icon.png" width="40%">
 
 #### Minimal-electron-react-boilerplate (extend verion of [Alex Devero](https://github.com/alexdevero) by [Sanan4li](https://github.com/Sanan4li) )
 
