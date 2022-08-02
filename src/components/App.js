@@ -63,7 +63,7 @@ const App = () => {
 		ipcRenderer.send("logs:MainWindow:call", ["TablesExistence"]);
 		ipcRenderer.on("logs:MainWindow:Update", (event, data) => {
 			//
-			console.log(data);
+			// console.log(data);
 			let Temp;
 			switch (data[0]) {
 				
@@ -76,6 +76,10 @@ const App = () => {
 						uplaylist:data[1].lastplaylist
 					});
 					break;
+				case "PlaylistDeleted":
+					ipcRenderer.send("logs:MainWindow:call", ["GetPlaylists"]);
+				case "HistoryDeleted":
+					ipcRenderer.send("logs:MainWindow:call", ["GetHistory"]);
 				case "reArrangedPlaylist":
 					setprofileUpload({
 						...userProfile,

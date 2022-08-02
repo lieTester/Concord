@@ -17,14 +17,24 @@ basicManage.acceptcall = async function (user, callback) {
     case "GetPlaylists":
       queryManager.GetPlaylists(callReturn);
       break;
+      
+    case "DeletePlaylist":
+      queryManager.DeletePlaylist(user, callReturn);
+      break;
 
     case "GetHistory":
       queryManager.GetHistory(callReturn);
       break;
 
+    case "DeleteHistory":
+      queryManager.DeleteHistory(user,callReturn);
+      break;
+
     case "re_arrangePlaylist":
       queryManager.re_arrangePlaylist(user, callReturn);
       break;
+    
+    
 
     case "updateProfile":
       queryManager.updateProfile(user[1], callReturn);
