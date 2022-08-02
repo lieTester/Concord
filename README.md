@@ -2,7 +2,7 @@
 <a href="https://drive.google.com/file/d/1ihD8RPjMB6Iz3auskRE4LQ5ELV8zu2Ct/view?usp=sharing">Concord - (Music Player)</a>
 </h2>
 
-![1659448653992](image/README/1659448653992.png)
+<img src="./assets/Screenshot1.png">
 
 ### Minimal-electron-react-boilerplate ( extended verion of [Alex Devero](https://github.com/alexdevero) by [Sanan4li](https://github.com/Sanan4li) )
 
